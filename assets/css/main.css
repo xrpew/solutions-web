@@ -121,6 +121,7 @@ input, select, textarea {
 			transition: none !important;
 		}
 	#modal {
+		cursor: pointer;
 		position: fixed; /* Posición fija para que el modal se mantenga en su lugar */
 		top: 0;
 		left: 0;
@@ -2325,7 +2326,6 @@ input, select, textarea {
 	}
 
 	@media screen and (max-width: 360px) {
-
 		label {
 			font-size: 0.675rem;
 		}
@@ -3908,4 +3908,23 @@ input, select, textarea {
 
 	#invisible{
 		display: none;
+	}
+
+	@media screen and (min-width: 780px){
+		#modal{		cursor: pointer;
+			position: fixed; /* Posición fija para que el modal se mantenga en su lugar */
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(5px);/* Fondo semitransparente oscuro para el modal */
+			z-index: 1; /* Asegura que el modal esté en la parte superior */
+			display: flex; /* Utiliza flexbox para centrar vertical y horizontalmente */
+			justify-content: center; /* Centra horizontalmente */
+			align-items: center; /* Centra verticalmente */
+			flex-direction: column;}
+		#modal img{
+			height: 80vh;
+		}
 	}

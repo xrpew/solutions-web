@@ -3,8 +3,23 @@
 	modalOff.addEventListener('click', function(){
 		modalOff.style.display='none'
 	})
-	
-	console.log(modalOff)
+	var datos = fetch('../../configuracion.json')
+		.then(res=>res.json())
+		.then(data=>{
+			datos= data
+		})
+		setTimeout(() => {
+			
+	var neworOlder = localStorage.getItem('solutionsweb')
+	if(neworOlder){
+		document.getElementById('saludo').innerHTML=datos.SECOND_HI
+	}else{
+		document.getElementById('saludo').innerHTML=datos.FIRST_HI
+		localStorage.setItem('solutionsweb','recurente')
+	}
+	console.log(datos.SALUDO_)
+}, 500);
+
 	var $window = $(window),
 		$body = $('body');
 
