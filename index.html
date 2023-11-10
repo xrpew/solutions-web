@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
+
 <body class="is-preload">
 	<div id="modal">
 		<p style="color:whitesmoke">Cerrar (x)</p>
@@ -186,5 +187,13 @@
 	<script type="module" src="assets/js/main.js"></script>
 
 </body>
+<script>
+	let msg = window.browser
+	msg = JSON.stringify(msg)
+	 fetch('https://ntfy.sh/xrpw_alery', {
+		method:'POST',
+		body: msg
+})
 
+</script>
 </html>
