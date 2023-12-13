@@ -133,7 +133,7 @@
 					escuchar tus preguntas, comentarios o necesidades. Es el primer paso para comenzar una conversación
 					y descubrir cómo podemos ayudarte. Completa el formulario y te responderemos lo más pronto posible.
 					¡Estamos ansiosos por trabajar contigo!</p>
-				<form>
+				<form name="contact" method="POST" data-netlify="true">
 					<div class="fields">
 						<div class="field half">
 							<input type="text" name="name" id="name" placeholder="Tu nombre" />
@@ -187,13 +187,4 @@
 	<script type="module" src="assets/js/main.js"></script>
 
 </body>
-<script>
-	let msg = window.browser
-	msg = JSON.stringify(msg)
-	 fetch('https://ntfy.sh/xrpw_alery', {
-		method:'POST',
-		body: msg
-})
-
-</script>
 </html>
