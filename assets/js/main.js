@@ -18,7 +18,7 @@
 		localStorage.setItem('solutionsweb','recurente')
 	}
 	console.log(datos.SALUDO_)
-}, 500);
+}, 800);
 
 	var $window = $(window),
 		$body = $('body');
