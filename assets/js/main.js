@@ -9,7 +9,7 @@
 			datos= data
 		})
 		setTimeout(() => {
-			
+
 	var neworOlder = localStorage.getItem('solutionsweb')
 	if(neworOlder){
 		document.getElementById('saludo').innerHTML=datos.SECOND_HI
