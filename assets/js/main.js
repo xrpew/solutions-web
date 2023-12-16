@@ -8,7 +8,8 @@
 		.then(data=>{
 			datos= data
 		})
-		setTimeout(() => {
+
+	setTimeout(() => {
 
 	var neworOlder = localStorage.getItem('solutionsweb')
 	if(neworOlder && datos){
@@ -20,8 +21,8 @@
 	else{
 		localStorage.setItem('solutionsweb','recurente')
 	}
-	console.log(datos.SALUDO_)
-}, 800);
+	console.log(datos.FIRST_HI)
+}, 1000);
 
 	var $window = $(window),
 		$body = $('body');
