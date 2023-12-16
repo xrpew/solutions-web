@@ -11,10 +11,13 @@
 		setTimeout(() => {
 
 	var neworOlder = localStorage.getItem('solutionsweb')
-	if(neworOlder){
+	if(neworOlder && datos){
 		document.getElementById('saludo').innerHTML=datos.SECOND_HI
-	}else{
+	}else if(!neworOlder && datos) {
 		document.getElementById('saludo').innerHTML=datos.FIRST_HI
+		localStorage.setItem('solutionsweb','recurente')
+	}
+	else{
 		localStorage.setItem('solutionsweb','recurente')
 	}
 	console.log(datos.SALUDO_)
