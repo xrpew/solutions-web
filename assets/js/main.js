@@ -14,9 +14,6 @@
 	var neworOlder = localStorage.getItem('solutionsweb')
 	if(neworOlder && datos){
 		document.getElementById('saludo').innerHTML=datos.SECOND_HI
-	}else if(!neworOlder && datos) {
-		document.getElementById('saludo').innerHTML=datos.FIRST_HI
-		localStorage.setItem('solutionsweb','recurente')
 	}
 	else{
 		localStorage.setItem('solutionsweb','recurente')
