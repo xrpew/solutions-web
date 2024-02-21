@@ -3,24 +3,6 @@
 	modalOff.addEventListener('click', function(){
 		modalOff.style.display='none'
 	})
-	var datos = fetch('../../configuracion.json')
-		.then(res=>res.json())
-		.then(data=>{
-			datos= data
-		})
-
-	setTimeout(() => {
-
-	var neworOlder = localStorage.getItem('solutionsweb')
-	if(neworOlder && datos){
-		document.getElementById('saludo').innerHTML=datos.SECOND_HI
-	}
-	else{
-		localStorage.setItem('solutionsweb','recurente')
-	}
-	console.log(datos.FIRST_HI)
-}, 1000);
-
 	var $window = $(window),
 		$body = $('body');
 
