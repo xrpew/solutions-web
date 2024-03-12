@@ -5,7 +5,8 @@ git pull
 
 
 docker stop soluweb
-docker system prune | echo y
+echo y | docker system prune
+sleep 2
 
 docker rmi soluweb
 docker build -t soluweb .
