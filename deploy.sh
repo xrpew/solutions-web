@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd solutions-web || exit 1
+cd solutions-web
 git pull
 
 
@@ -8,7 +8,6 @@ docker stop soluweb
 echo y | docker system prune
 sleep 2
 
-docker rmi soluweb
 docker build -t soluweb .
 
 docker run -p 80:80 -d --name soluweb soluweb:latest

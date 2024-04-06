@@ -135,23 +135,28 @@
 					escuchar tus preguntas, comentarios o necesidades. Es el primer paso para comenzar una conversación
 					y descubrir cómo podemos ayudarte. Completa el formulario y te responderemos lo más pronto posible.
 					¡Estamos ansiosos por trabajar contigo!</p>
-				<form name="contact" method="POST" data-netlify="true">
+				<!-- <form name="contact" method="POST" data-netlify="true"> -->
+			    <form id="formSesion" onsubmit="handleSubmit(event)">
 					<div class="fields">
 						<div class="field half">
-							<input type="text" name="name" id="name" placeholder="Tu nombre" />
+							<input required type="text" name="name" id="name" placeholder="Tu nombre" />
 						</div>
 						<div class="field half">
-							<input type="email" name="email" id="email" placeholder="Tu email" />
+							<input required type="email" name="email" id="email" placeholder="Tu email" />
 						</div>
 						<div class="field">
-							<textarea name="message" id="message"
+							<textarea name="message" id="message" required
 								placeholder="Detalla tus necesidades y estaremos encantados de asistirte."
 								rows="7"></textarea>
 						</div>
 					</div>
 					<ul class="actions">
-						<li><input type="submit" data-umami-event="send-mail-button" value="Enviar mensaje" class="button primary" /></li>
+						<li><input type="submit" value="Enviar mensaje" class="button primary" /></li>
 					</ul>
+					<span id="alt255"> </span>
+					<span id="sending" hidden>enviando...</span>
+					<span id="recive" hidden>Gracias por tu mensaje, nuestro equipo te contactará</span>
+
 				</form>
 			</div>
 			<footer>
@@ -189,3 +194,27 @@
 	<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
+<script>
+    var handleSubmit = (e)=>{
+        document.getElementById('alt255').style.display = 'none'
+        document.getElementById('sending').style.display = 'block'
+        let name = (e.target[0].value)
+        let mail = (e.target[1].value)
+        let mensaje = (e.target[2].value)
+        setTimeout(()=>{
+            document.getElementById('sending').style.display = 'none'
+	        document.getElementById('recive').style.display = 'block'
+            document.getElementById("formSesion").reset()
+        },1800)
+        e.preventDefault()
+        fetch('https://ntfy.soluweb.cl/soluweb',{
+            method:'POST',
+            headers: { 'Title': name, 'Markdown': 'yes', 'Tags': mail },
+            body:mensaje,
+        })
+		setTimeout(()=>{
+	        document.getElementById('recive').style.display = 'none'
+        document.getElementById('alt255').style.display = 'block'
+        },3500)
+    }
+</script>
