@@ -14,9 +14,17 @@
 
 
 <body class="is-preload">
-	<div id="modal">
-		<p style="color:whitesmoke">Cerrar (x)</p>
+	<div id="modal3" style="display: none;">
+		<!-- <div id="modal3"> -->
+	<div class="cardDivThanks">
+		<p style="font-weight: bold;">✅ Gracias por contactarte </p>
+		<p>Hemos recibido tu mensaje, y nuestro equipo se pondrá en contacto contigo a la brevedad para poner en marcha tu proyecto</p>
+		</div>
+		</div>
+	<!-- <div id="modal" style="display: none;"> -->
+		<div id="modal">
 		<img src="/images/modal.png" alt="">
+		<button style="background-color: #212121; color: wheat !important;">Genial!</button>
 	</div>
 	<!-- Wrapper -->
 	<div id="wrapper">
@@ -155,8 +163,7 @@
 					</ul>
 					<span id="alt255"> </span>
 					<span id="sending" hidden>enviando...</span>
-					<span id="recive" hidden>Gracias por tu mensaje, nuestro equipo te contactará</span>
-
+					<span id="recive" hidden>Vaciando formulario...</span>
 				</form>
 			</div>
 			<footer>
@@ -179,9 +186,8 @@
 				</ul>
 			</footer>
 		</section>
-
 		<!-- Copyright -->
-		<div class="copyright">&copy; Soluciones web. All rights reserved. Design: <a href="#">###</a>.</div>
+		<div class="copyright">&copy; Soluciones web.</div>
 
 	</div>
 
@@ -195,17 +201,20 @@
 </body>
 </html>
 <script>
+	let modalOff3 = document.getElementById('modal3') 
     var handleSubmit = (e)=>{
-        document.getElementById('alt255').style.display = 'none'
+		document.getElementById('alt255').style.display = 'none'
         document.getElementById('sending').style.display = 'block'
+		modalOff3.style.display='flex'
         let name = (e.target[0].value)
         let mail = (e.target[1].value)
         let mensaje = (e.target[2].value)
         setTimeout(()=>{
             document.getElementById('sending').style.display = 'none'
 	        document.getElementById('recive').style.display = 'block'
+			modalOff3.style.display='none'
             document.getElementById("formSesion").reset()
-        },1800)
+        },4000)
         e.preventDefault()
         fetch('https://ntfy.soluweb.cl/soluweb',{
             method:'POST',
@@ -214,7 +223,12 @@
         })
 		setTimeout(()=>{
 	        document.getElementById('recive').style.display = 'none'
-        document.getElementById('alt255').style.display = 'block'
-        },3500)
+        	document.getElementById('alt255').style.display = 'block'
+        },4800)
     }
+
+
+	modalOff3.addEventListener('click', function(){
+		modalOff3.style.display='none'
+	})
 </script>
