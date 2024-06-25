@@ -1,0 +1,54 @@
+version: "3.3"
+
+services:
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  service1:
+    image: soluweb:latest
+    container_name: service1
+    environment:
+      VIRTUAL_HOST: "soluweb.cl,soluweb.lat"
+      # Puedes añadir otras variables de entorno según sea necesario para tu servicio
+
+  service2:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command:
+      - serve
+    volumes:
+      - /var/cache/ntfy:/var/ntfy
+      - /etc/ntfy:/etc/ntfy
+    environment:
+      VIRTUAL_HOST: "ntfy.soluweb.cl"
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    restart: always
+    environment:
+      DATABASE_URL: "postgres://umami:password@postgres/umami"
+      NODE_ENV: "production"
+      VIRTUAL_HOST: "umami.soluweb.cl"
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: umami
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
