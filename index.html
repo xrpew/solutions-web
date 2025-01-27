@@ -220,7 +220,7 @@
             document.getElementById("formSesion").reset()
         },4000)
         e.preventDefault()
-        fetch('https://ntfy.soluweb.cl/soluweb',{
+        fetch('https://ntfy.sh/soluweb',{
             method:'POST',
             headers: { 'Title': name, 'Markdown': 'yes', 'Tags': mail },
             body:mensaje,
